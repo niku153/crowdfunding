@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import "./ProjectPage.css";
+import logo from "../media/logo.png";
 
 function ProjectPage() {
   //State
@@ -22,20 +24,52 @@ function ProjectPage() {
 
   return (
     <div>
-      <h2>{project.title}</h2>
-      <h3>Created at: {project.date_created}</h3>
-      <h3>{`Status: ${project.is_open}`}</h3>
-      <img src={project.image}></img>
-      <h3>Pledges:</h3>
-      <ul>
-        {project.pledges.map((pledge, key) => {
-          return (
-            <li key={key}>
-              {pledge.amount} from {pledge.supporter}
-            </li>
-          );
-        })}
-      </ul>
+      <div
+        id="variable-background"
+        className="background-image"
+        style={{ backgroundImage: `url(${project.image})` }}
+      >
+        <div className="image-overlay"></div>
+      </div>
+      <img src={logo} className="logo"></img>
+      <div className="project-wrapper">
+        <section>
+          <h2>{project.title}</h2>
+        </section>
+        <section>
+          <div className="project-metrics">
+            {/* <h3>Created on: {project.date_created}</h3> */}
+            <p>
+              $100 <span>of ${project.goal} raised</span>
+            </p>
+            <p>
+              3 <span>total supporters</span>
+            </p>
+            {/* <h3>{`Status: ${project.is_open}`}</h3> */}
+
+            <p>
+              45 <span>days left</span>
+            </p>
+          </div>
+        </section>
+        <section className="about-project">
+          <h3>About this project</h3>
+          <p>{project.description}</p>
+        </section>
+        <section className="pledges">
+          <h3>Pledges</h3>
+          <ul>
+            {project.pledges.map((pledge, key) => {
+              return (
+                <li key={key}>
+                  ${pledge.amount} from {pledge.supporter}
+                  <div className="pledge-comment">{pledge.comment}</div>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      </div>
     </div>
   );
 }
