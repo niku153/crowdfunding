@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./ProjectPage.css";
 import logo from "../media/logo.png";
+import moment from "moment";
 
 function ProjectPage() {
   //State
@@ -21,6 +22,15 @@ function ProjectPage() {
         setProject(data);
       });
   }, []);
+
+  // Variables
+  const currentDate = moment();
+  const closingDate = moment(project.closing_date);
+  console.log(currentDate);
+  console.log(closingDate);
+
+  const diff = closingDate.diff(currentDate, "days");
+  console.log(diff);
 
   return (
     <div>
