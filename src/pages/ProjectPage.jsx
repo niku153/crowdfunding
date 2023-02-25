@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 function ProjectPage() {
   //State
   const [project, setProject] = useState({ pledges: [] });
+  const [owner, setOwner] = useState([]);
 
   //Hooks
   const { id } = useParams();
@@ -22,6 +23,14 @@ function ProjectPage() {
       })
       .then((data) => {
         setProject(data);
+        const userId = data.owner;
+        return fetch(`${import.meta.env.VITE_API_URL}users/${userId}`);
+      })
+      .then((results) => {
+        return results.json();
+      })
+      .then((data) => {
+        return setOwner(data);
       });
   }, []);
 
@@ -31,6 +40,8 @@ function ProjectPage() {
 
   const diff = closingDate.diff(currentDate, "days");
   console.log(diff);
+
+  const is_open = moment().isSameOrBefore(closingDate);
 
   return (
     <div>
@@ -45,8 +56,8 @@ function ProjectPage() {
       <div className="project-wrapper">
         <section>
           <h2>{project.title}</h2>
-          <h6>{project.owner}</h6>
-          <h6>{project.is_open ? <p>Active</p> : <p>Inactive</p>}</h6>
+          <h6>{owner.username}</h6>
+          <h6>{is_open ? <p>Active</p> : <p>Inactive</p>}</h6>
         </section>
         <section>
           <div className="project-metrics">
@@ -55,12 +66,12 @@ function ProjectPage() {
               ${project.total} <span>of ${project.goal} raised</span>
             </p>
             <p>
-              3 <span>total supporters</span>
+              {project.pledges.length} <span>total supporters</span>
             </p>
             {/* <h3>{`Status: ${project.is_open}`}</h3> */}
 
             <p>
-              {diff} <span>days left</span>
+              {diff > 0 ? diff : 0} <span>days left</span>
             </p>
           </div>
         </section>
@@ -84,6 +95,7 @@ function ProjectPage() {
         <Link to="/project/pledge" project={project}>
           Make a pledge
         </Link>
+        <PledgeForm project={project} />
       </div>
     </div>
   );

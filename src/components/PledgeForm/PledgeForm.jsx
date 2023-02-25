@@ -10,7 +10,6 @@ function PledgeForm(props) {
     amount: null,
     comment: "",
     anonymous: false,
-    project: null,
   });
 
   const navigate = useNavigate();
@@ -22,7 +21,6 @@ function PledgeForm(props) {
     setPledges((prevPledges) => ({
       ...prevPledges,
       [id]: value,
-      project: project.title,
     }));
   };
 
@@ -41,7 +39,7 @@ function PledgeForm(props) {
               "Content-Type": "application/json",
               Authorization: `Token ${authToken}`,
             },
-            body: JSON.stringify(pledges),
+            body: JSON.stringify({ project: project.id, ...pledges }),
           }
         );
         if (!response.ok) {
@@ -83,15 +81,7 @@ function PledgeForm(props) {
             <label htmlFor="anonymous">Anonymous:</label>
             <input type="checkbox" id="anonymous" onChange={handleChange} />
           </div>
-          <div>
-            <label htmlFor="project">Project:</label>
-            <input
-              type="text"
-              id="project"
-              placeholder="needs to be auto-filled with current project"
-              onChange={handleChange}
-            />
-          </div>
+
           <button type="submit">Pledge</button>
         </form>
       ) : (
