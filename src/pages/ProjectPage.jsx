@@ -6,11 +6,16 @@ import logo from "../media/logo.png";
 import moment from "moment";
 import PledgeForm from "../components/PledgeForm/PledgeForm";
 import { Link } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 
 function ProjectPage() {
   //State
   const [project, setProject] = useState({ pledges: [] });
   const [owner, setOwner] = useState([]);
+
+  //Context
+  const { user } = useOutletContext();
+  console.log(user);
 
   //Hooks
   const { id } = useParams();
@@ -58,6 +63,7 @@ function ProjectPage() {
           <h2>{project.title}</h2>
           <h6>{owner.username}</h6>
           <h6>{is_open ? <p>Active</p> : <p>Inactive</p>}</h6>
+          {user && user.id === project.owner && <p>Edit</p>}
         </section>
         <section>
           <div className="project-metrics">

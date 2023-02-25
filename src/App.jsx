@@ -1,5 +1,5 @@
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Pages
 import HomePage from "./pages/HomePage";
@@ -17,10 +17,29 @@ const Layout = () => {
   const [loggedIn, setLoggedIn] = useState(
     window.localStorage.getItem("token") != null
   );
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    const authToken = window.localStorage.getItem("token");
+
+    fetch(`${import.meta.env.VITE_API_URL}users/me`, {
+      method: "get",
+      headers: {
+        Authorization: `Token ${authToken}`,
+      },
+    })
+      .then((results) => {
+        return results.json();
+      })
+      .then((data) => {
+        setUser(data);
+      });
+  }, [loggedIn]);
+
   return (
     <div>
       <Nav loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-      <Outlet context={[loggedIn, setLoggedIn]} />
+      <Outlet context={{ loggedIn, setLoggedIn, user }} />
     </div>
   );
 };

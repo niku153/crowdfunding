@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
 function LoginForm() {
-  const [, setLoggedIn] = useOutletContext();
+  const { setLoggedIn } = useOutletContext();
+
   //State
   const [credentials, setCredentials] = useState({
     username: "",
