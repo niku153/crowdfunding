@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import "./ProjectPage.css";
 import logo from "../media/logo.png";
 import moment from "moment";
+import PledgeForm from "../components/PledgeForm/PledgeForm";
+import { Link } from "react-router-dom";
 
 function ProjectPage() {
   //State
@@ -26,8 +28,6 @@ function ProjectPage() {
   // Variables
   const currentDate = moment();
   const closingDate = moment(project.closing_date);
-  console.log(currentDate);
-  console.log(closingDate);
 
   const diff = closingDate.diff(currentDate, "days");
   console.log(diff);
@@ -45,12 +45,14 @@ function ProjectPage() {
       <div className="project-wrapper">
         <section>
           <h2>{project.title}</h2>
+          <h6>{project.owner}</h6>
+          <h6>{project.is_open ? <p>Active</p> : <p>Inactive</p>}</h6>
         </section>
         <section>
           <div className="project-metrics">
             {/* <h3>Created on: {project.date_created}</h3> */}
             <p>
-              $100 <span>of ${project.goal} raised</span>
+              ${project.total} <span>of ${project.goal} raised</span>
             </p>
             <p>
               3 <span>total supporters</span>
@@ -58,7 +60,7 @@ function ProjectPage() {
             {/* <h3>{`Status: ${project.is_open}`}</h3> */}
 
             <p>
-              45 <span>days left</span>
+              {diff} <span>days left</span>
             </p>
           </div>
         </section>
@@ -79,6 +81,9 @@ function ProjectPage() {
             })}
           </ul>
         </section>
+        <Link to="/project/pledge" project={project}>
+          Make a pledge
+        </Link>
       </div>
     </div>
   );
