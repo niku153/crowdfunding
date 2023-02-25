@@ -96,20 +96,12 @@ function ProjectForm(props) {
               <input type="checkbox" id="is_open" onChange={handleChange} />
             </div>
             <div>
-              <label htmlFor="date_created">Project Deadline:</label>
-              <input
-                type="datetime-local"
-                id="deadline"
-                onChange={handleChange}
-              />
+              <label htmlFor="date_created">Date Created:</label>
+              <input type="date" id="date_created" onChange={handleChange} />
             </div>
             <div>
               <label htmlFor="closing_date">Project Deadline:</label>
-              <input
-                type="datetime-local"
-                id="deadline"
-                onChange={handleChange}
-              />
+              <input type="date" id="closing_date" onChange={handleChange} />
             </div>
             <button type="submit">Create Project</button>
           </form>

@@ -5,7 +5,6 @@ import { useState } from "react";
 import HomePage from "./pages/HomePage";
 import ProjectPage from "./pages/ProjectPage";
 import LoginPage from "./pages/LoginPage";
-import PledgePage from "./pages/PledgePage";
 
 // Components
 import Nav from "./components/Nav/Nav";
@@ -33,7 +32,6 @@ const router = createBrowserRouter([
       { path: "/", element: <HomePage /> },
       { path: "/login", element: <LoginPage /> },
       { path: "/project/:id", element: <ProjectPage /> },
-      { path: "/project/pledge", element: <PledgePage /> },
       { path: "/create-project", element: <CreateProject /> },
     ],
   },
