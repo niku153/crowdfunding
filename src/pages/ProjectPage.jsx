@@ -91,7 +91,7 @@ function ProjectPage() {
           <h6>{is_open ? <p>Active</p> : <p>Inactive</p>}</h6>
           {user && user.id === project.owner && (
             <>
-              <p>Edit</p>
+              <a href={`/project/${project.id}/edit`}>Edit</a>
               <button onClick={deleteProject}>Delete</button>
             </>
           )}
