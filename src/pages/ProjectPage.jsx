@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./ProjectPage.css";
 import logo from "../media/logo.png";
 import moment from "moment";
@@ -19,6 +19,7 @@ function ProjectPage() {
 
   //Hooks
   const { id } = useParams();
+  const navigate = useNavigate();
 
   //Effects
   useEffect(() => {
@@ -38,6 +39,31 @@ function ProjectPage() {
         return setOwner(data);
       });
   }, []);
+
+  const deleteProject = (e) => {
+    const authToken = window.localStorage.getItem("token");
+
+    if (authToken) {
+      fetch(`${import.meta.env.VITE_API_URL}projects/${id}`, {
+        method: "delete",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Token ${authToken}`,
+        },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("something went wrong");
+          }
+          navigate("/");
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    } else {
+      navigate("/");
+    }
+  };
 
   // Variables
   const currentDate = moment();
@@ -63,13 +89,19 @@ function ProjectPage() {
           <h2>{project.title}</h2>
           <h6>{owner.username}</h6>
           <h6>{is_open ? <p>Active</p> : <p>Inactive</p>}</h6>
-          {user && user.id === project.owner && <p>Edit</p>}
+          {user && user.id === project.owner && (
+            <>
+              <p>Edit</p>
+              <button onClick={deleteProject}>Delete</button>
+            </>
+          )}
         </section>
         <section>
           <div className="project-metrics">
             {/* <h3>Created on: {project.date_created}</h3> */}
             <p>
-              ${project.total} <span>of ${project.goal} raised</span>
+              ${project.total ? project.total : 0}{" "}
+              <span>of ${project.goal} raised</span>
             </p>
             <p>
               {project.pledges.length} <span>total supporters</span>

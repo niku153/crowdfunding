@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import ProjectForm from "../components/ProjectForm/ProjectForm";
+import ProjectPage from "./ProjectPage";
 
 function EditProjectPage(props) {
   const authToken = window.localStorage.getItem("token");
@@ -14,6 +15,7 @@ function EditProjectPage(props) {
     date_created: null,
     closing_date: null,
   });
+  const [changed, setChanged] = useState(false);
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -29,6 +31,7 @@ function EditProjectPage(props) {
   }, []);
 
   const handleChange = (id, value) => {
+    // setChanged(true);
     setProject((prevProject) => ({
       ...prevProject,
       [id]: value,
@@ -66,6 +69,14 @@ function EditProjectPage(props) {
     }
   };
 
+  // const handleCancel = (id, value) => {
+  //   setProject((prevProject) => ({
+  //     ...prevProject,
+  //     [id]: value,
+  //   }));
+  //   setChanged(false);
+  // };
+
   return (
     <>
       {authToken ? (
@@ -79,6 +90,12 @@ function EditProjectPage(props) {
           <Link to="/login">Log in</Link> to create a project
         </p>
       )}
+      {/* {changed ? (
+        <>
+          <button>Save</button>
+          <button onClick={handleCancel}>Cancel</button>
+        </>
+      ) : null} */}
     </>
   );
 }

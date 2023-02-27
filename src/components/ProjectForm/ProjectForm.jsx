@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import moment from "moment";
+import Button from "../button";
 
 function ProjectForm(props) {
   const handleChange = (event) => {
@@ -9,8 +10,6 @@ function ProjectForm(props) {
   const handleDateChange = (event) => {
     const { id, value } = event.target;
     props.onChange(id, moment(value).toISOString());
-    console.log(value);
-    console.log(moment(value).toISOString());
   };
 
   console.log(props.project);
@@ -83,7 +82,9 @@ function ProjectForm(props) {
           value={moment(props.project.closing_date).format("YYYY-MM-DD")}
         />
       </div>
+      {/* <Button type="submit" handleClick={props.onSubmit} label="Create Project" /> */}
       <button type="submit" onClick={props.onSubmit}>
+        {" "}
         Create Project
       </button>
     </div>
