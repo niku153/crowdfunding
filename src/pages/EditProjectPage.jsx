@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import ProjectForm from "../components/ProjectForm/ProjectForm";
 
-function CreateProject(props) {
+function EditProjectPage(props) {
   const authToken = window.localStorage.getItem("token");
   const [project, setProject] = useState({
     title: "",
@@ -17,6 +17,16 @@ function CreateProject(props) {
 
   const navigate = useNavigate();
   const { id } = useParams();
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}projects/${id}`)
+      .then((results) => {
+        return results.json();
+      })
+      .then((data) => {
+        setProject(data);
+      });
+  }, []);
 
   const handleChange = (id, value) => {
     setProject((prevProject) => ({
@@ -33,9 +43,9 @@ function CreateProject(props) {
     if (authToken) {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}projects/`,
+          `${import.meta.env.VITE_API_URL}projects/${id}`,
           {
-            method: "post",
+            method: "put",
             headers: {
               "Content-Type": "application/json",
               Authorization: `Token ${authToken}`,
@@ -73,4 +83,4 @@ function CreateProject(props) {
   );
 }
 
-export default CreateProject;
+export default EditProjectPage;

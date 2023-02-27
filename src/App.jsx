@@ -5,13 +5,14 @@ import { useState, useEffect } from "react";
 import HomePage from "./pages/HomePage";
 import ProjectPage from "./pages/ProjectPage";
 import LoginPage from "./pages/LoginPage";
+import EditProjectPage from "./pages/EditProjectPage";
+import CreateProject from "./pages/CreateProject";
 
 // Components
 import Nav from "./components/Nav/Nav";
 
 //CSS
 import "./App.css";
-import CreateProject from "./pages/CreateProject";
 
 const Layout = () => {
   const [loggedIn, setLoggedIn] = useState(
@@ -52,6 +53,8 @@ const router = createBrowserRouter([
       { path: "/login", element: <LoginPage /> },
       { path: "/project/:id", element: <ProjectPage /> },
       { path: "/create-project", element: <CreateProject /> },
+      { path: "/project/:id/edit", element: <EditProjectPage /> },
+      {},
     ],
   },
 ]);
