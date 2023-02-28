@@ -59,7 +59,7 @@ function EditProjectPage(props) {
         if (!response.ok) {
           throw new Error(await response.text());
         }
-        navigate(-1);
+        navigate(`/project/${project.id}`);
       } catch (err) {
         console.error(err);
         alert(`Error: ${err.message}`);

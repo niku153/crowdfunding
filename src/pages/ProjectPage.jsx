@@ -12,10 +12,10 @@ function ProjectPage() {
   //State
   const [project, setProject] = useState({ pledges: [] });
   const [owner, setOwner] = useState([]);
+  // const [bookmark, setBookmark] = useState(false);
 
   //Context
   const { user } = useOutletContext();
-  console.log(user);
 
   //Hooks
   const { id } = useParams();
@@ -39,6 +39,12 @@ function ProjectPage() {
         return setOwner(data);
       });
   }, []);
+
+  // const handleBookmark = (event) => {
+  //   event.preventDefault();
+  //   setBookmark(true);
+  //   console.log(bookmark);
+  // };
 
   const deleteProject = (e) => {
     const authToken = window.localStorage.getItem("token");
@@ -70,7 +76,6 @@ function ProjectPage() {
   const closingDate = moment(project.closing_date);
 
   const diff = closingDate.diff(currentDate, "days");
-  console.log(diff);
 
   const is_open = moment().isSameOrBefore(closingDate);
 
@@ -95,6 +100,14 @@ function ProjectPage() {
               <button onClick={deleteProject}>Delete</button>
             </>
           )}
+          {/* <div>
+            {" "}
+            {bookmark === false ? (
+              <button onClick={handleBookmark}>Bookmark</button>
+            ) : (
+              <button onClick={handleBookmark}>Bookmarked</button>
+            )}
+          </div> */}
         </section>
         <section>
           <div className="project-metrics">

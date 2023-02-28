@@ -14,6 +14,7 @@ function CreateProject(props) {
     is_open: true,
     date_created: null,
     closing_date: null,
+    bookmarked_by: false,
   });
 
   const navigate = useNavigate();
@@ -47,7 +48,7 @@ function CreateProject(props) {
         if (!response.ok) {
           throw new Error(await response.text());
         }
-        navigate(-1);
+        navigate(`/project/${project.id}`);
       } catch (err) {
         console.error(err);
         alert(`Error: ${err.message}`);

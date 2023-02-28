@@ -7,12 +7,15 @@ import ProjectPage from "./pages/ProjectPage";
 import LoginPage from "./pages/LoginPage";
 import EditProjectPage from "./pages/EditProjectPage";
 import CreateProject from "./pages/CreateProject";
+import RegistrationPage from "./pages/RegistrationPage";
+import UserPage from "./pages/UserPage";
 
 // Components
 import Nav from "./components/Nav/Nav";
 
 //CSS
 import "./App.css";
+import ProfilePage from "./pages/ProfilePage";
 
 const Layout = () => {
   const [loggedIn, setLoggedIn] = useState(
@@ -54,6 +57,10 @@ const router = createBrowserRouter([
       { path: "/project/:id", element: <ProjectPage /> },
       { path: "/create-project", element: <CreateProject /> },
       { path: "/project/:id/edit", element: <EditProjectPage /> },
+      { path: "/register", element: <RegistrationPage /> },
+      { path: "/user/:id", element: <UserPage /> },
+      { path: "/profile", element: <ProfilePage /> },
+
       {},
     ],
   },

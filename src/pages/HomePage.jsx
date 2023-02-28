@@ -17,6 +17,7 @@ import "./HomePage.css";
 function HomePage() {
   //State
   const [projectList, setProjectList] = useState([]);
+  const [shuffledProjectList, setShuffledProjectList] = useState([]);
 
   //Effects
   useEffect(() => {
@@ -28,6 +29,17 @@ function HomePage() {
         setProjectList(data);
       });
   }, []);
+
+  useEffect(() => {
+    shuffleProjectList();
+  }, [projectList]);
+
+  const shuffleProjectList = () => {
+    const shuffledList = [...projectList]
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 6);
+    setShuffledProjectList(shuffledList);
+  };
   return (
     <div>
       <section className="homepage-hero">
@@ -51,6 +63,12 @@ function HomePage() {
       </section>
       <div id="project-list">
         {projectList.map((project, key) => {
+          return <ProjectCard key={key} projectData={project} />;
+        })}
+      </div>
+      <div>
+        <button onClick={shuffleProjectList}>Shuffle</button>
+        {shuffledProjectList.map((project, key) => {
           return <ProjectCard key={key} projectData={project} />;
         })}
       </div>
