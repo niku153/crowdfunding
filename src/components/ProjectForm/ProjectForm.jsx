@@ -82,11 +82,11 @@ function ProjectForm(props) {
           value={moment(props.project.closing_date).format("YYYY-MM-DD")}
         />
       </div>
-      {/* <Button type="submit" handleClick={props.onSubmit} label="Create Project" /> */}
-      <button type="submit" onClick={props.onSubmit}>
+      <Button type="submit" handleClick={props.onSubmit} label={props.label} />
+      {/* <button type="submit" onClick={props.onSubmit}>
         {" "}
         Create Project
-      </button>
+      </button> */}
     </div>
   );
 }

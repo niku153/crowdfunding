@@ -84,6 +84,7 @@ function EditProjectPage(props) {
           onChange={handleChange}
           onSubmit={handleSubmit}
           project={project}
+          label="Save changes"
         />
       ) : (
         <p>

@@ -12,7 +12,7 @@ function ProjectPage() {
   //State
   const [project, setProject] = useState({ pledges: [] });
   const [owner, setOwner] = useState([]);
-  // const [bookmark, setBookmark] = useState(false);
+  const [bookmark, setBookmark] = useState(false);
 
   //Context
   const { user } = useOutletContext();
@@ -29,6 +29,13 @@ function ProjectPage() {
       })
       .then((data) => {
         setProject(data);
+        data.bookmarked_by.map((bookmark_user) => {
+          console.log(bookmark_user, user);
+
+          if (bookmark_user.id === user?.id) {
+            setBookmark(true);
+          }
+        });
         const userId = data.owner;
         return fetch(`${import.meta.env.VITE_API_URL}users/${userId}`);
       })
@@ -38,13 +45,35 @@ function ProjectPage() {
       .then((data) => {
         return setOwner(data);
       });
+  }, [user]);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}projects/${id}/`).then((data) => {
+      return data.json();
+    });
+
+    // if bookmarked setState(bookmarked)
   }, []);
 
-  // const handleBookmark = (event) => {
-  //   event.preventDefault();
-  //   setBookmark(true);
-  //   console.log(bookmark);
-  // };
+  const addToBookmark = (event) => {
+    const authToken = window.localStorage.getItem("token");
+
+    fetch(`${import.meta.env.VITE_API_URL}projects/${id}/bookmarked/`, {
+      method: "post",
+      headers: {
+        Authorization: `Token ${authToken}`,
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("something went wrong");
+        }
+        setBookmark(true);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
   const deleteProject = (e) => {
     const authToken = window.localStorage.getItem("token");
@@ -100,6 +129,14 @@ function ProjectPage() {
               <button onClick={deleteProject}>Delete</button>
             </>
           )}
+          {bookmark ? (
+            <div>Bookmarked</div>
+          ) : (
+            <button type="radio" onClick={addToBookmark}>
+              Bookmark
+            </button>
+          )}
+
           {/* <div>
             {" "}
             {bookmark === false ? (

@@ -14,7 +14,6 @@ function CreateProject(props) {
     is_open: true,
     date_created: null,
     closing_date: null,
-    bookmarked_by: false,
   });
 
   const navigate = useNavigate();
@@ -65,6 +64,7 @@ function CreateProject(props) {
           onChange={handleChange}
           onSubmit={handleSubmit}
           project={project}
+          label="Create Project"
         />
       ) : (
         <p>
