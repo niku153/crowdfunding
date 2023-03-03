@@ -58,7 +58,7 @@ function HomePage() {
           <h3>crowdfund your research</h3>
         </div>
         <a href="/create-project" className="project-registration">
-          Register your project
+          Register your project →
         </a>
       </section>
       <div id="project-list">

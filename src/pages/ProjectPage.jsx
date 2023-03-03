@@ -7,6 +7,8 @@ import moment from "moment";
 import PledgeForm from "../components/PledgeForm/PledgeForm";
 import { Link } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 function ProjectPage() {
   //State
@@ -30,7 +32,7 @@ function ProjectPage() {
       .then((data) => {
         setProject(data);
         data.bookmarked_by.map((bookmark_user) => {
-          console.log(bookmark_user, user);
+          // console.log(bookmark_user, user);
 
           if (bookmark_user.id === user?.id) {
             setBookmark(true);
@@ -46,14 +48,6 @@ function ProjectPage() {
         return setOwner(data);
       });
   }, [user]);
-
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}projects/${id}/`).then((data) => {
-      return data.json();
-    });
-
-    // if bookmarked setState(bookmarked)
-  }, []);
 
   const addToBookmark = (event) => {
     const authToken = window.localStorage.getItem("token");
@@ -108,6 +102,8 @@ function ProjectPage() {
 
   const is_open = moment().isSameOrBefore(closingDate);
 
+  const emailIcon = <FontAwesomeIcon icon={faEnvelope} />;
+
   return (
     <div>
       <div
@@ -122,6 +118,10 @@ function ProjectPage() {
         <section>
           <h2>{project.title}</h2>
           <h6>{owner.username}</h6>
+          <div>
+            {emailIcon}
+            <span>{owner.email}</span>
+          </div>
           <h6>{is_open ? <p>Active</p> : <p>Inactive</p>}</h6>
           {user && user.id === project.owner && (
             <>
@@ -132,9 +132,7 @@ function ProjectPage() {
           {bookmark ? (
             <div>Bookmarked</div>
           ) : (
-            <button type="radio" onClick={addToBookmark}>
-              Bookmark
-            </button>
+            <div onClick={addToBookmark}>Bookmark</div>
           )}
 
           {/* <div>
@@ -180,9 +178,7 @@ function ProjectPage() {
             })}
           </ul>
         </section>
-        <Link to="/project/pledge" project={project}>
-          Make a pledge
-        </Link>
+
         <PledgeForm project={project} />
       </div>
     </div>

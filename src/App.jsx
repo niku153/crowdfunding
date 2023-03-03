@@ -6,7 +6,7 @@ import HomePage from "./pages/HomePage";
 import ProjectPage from "./pages/ProjectPage";
 import LoginPage from "./pages/LoginPage";
 import EditProjectPage from "./pages/EditProjectPage";
-import CreateProject from "./pages/CreateProject";
+import CreateProject from "./pages/CreateProject/CreateProject";
 import RegistrationPage from "./pages/RegistrationPage";
 import UserPage from "./pages/UserPage";
 

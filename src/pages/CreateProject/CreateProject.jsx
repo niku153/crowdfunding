@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-import ProjectForm from "../components/ProjectForm/ProjectForm";
+import ProjectForm from "../../components/ProjectForm/ProjectForm";
+import "./CreateProject.css";
 
 function CreateProject(props) {
   const authToken = window.localStorage.getItem("token");
@@ -59,6 +60,7 @@ function CreateProject(props) {
 
   return (
     <>
+      <h2>Create a New Project</h2>
       {authToken ? (
         <ProjectForm
           onChange={handleChange}

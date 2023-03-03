@@ -79,6 +79,8 @@ function EditProjectPage(props) {
 
   return (
     <>
+      <h2>Edit a Project</h2>
+
       {authToken ? (
         <ProjectForm
           onChange={handleChange}

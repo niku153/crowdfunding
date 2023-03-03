@@ -56,20 +56,22 @@
   margin-top: 0;
   background-color: transparent;
   color: rgb(171, 170, 170);
-  font-size: 25px;
+  font-size: 20px;
   font-family: var(--heading-font);
   white-space: nowrap;
   font-weight: 400;
   margin-bottom: 50px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .project-registration {
   position: absolute;
-  bottom: 10px;
-  right: 8px;
+  top: 150px;
+  left: 15px;
   text-decoration: none;
-  background-color: white;
-  color: #eb9200;
+  background-color: rgb(60, 179, 171);
+  color: white;
   padding: 10px 15px;
   border-radius: 20px;
   transition: all 0.3s ease-in-out;
@@ -81,5 +83,5 @@
 } */
 
 .project-registration:hover {
-  background-color: rgb(146, 146, 146, 0.1);
+  background-color: #157a73;
 }

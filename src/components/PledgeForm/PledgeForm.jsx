@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
+import "./PledgeForm.css";
+
 function PledgeForm(props) {
   const { project } = props;
   const authToken = window.localStorage.getItem("token");
@@ -56,10 +58,11 @@ function PledgeForm(props) {
   };
 
   return (
-    <div>
+    <div className="pledge-form-wrapper">
+      <h6>Make a pledge</h6>
       {authToken ? (
         <form onSubmit={handleSubmit}>
-          <div>
+          <div className="pledge-form-item">
             <label htmlFor="amount">Amount:</label>
             <input
               type="number"
@@ -68,7 +71,7 @@ function PledgeForm(props) {
               onChange={handleChange}
             />
           </div>
-          <div>
+          <div className="pledge-form-item">
             <label htmlFor="comment">Comment:</label>
             <input
               type="text"
@@ -77,7 +80,7 @@ function PledgeForm(props) {
               onChange={handleChange}
             />
           </div>
-          <div>
+          <div className="pledge-form-item">
             <label htmlFor="anonymous">Anonymous:</label>
             <input type="checkbox" id="anonymous" onChange={handleChange} />
           </div>

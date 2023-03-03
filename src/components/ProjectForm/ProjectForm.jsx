@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import moment from "moment";
-import Button from "../button";
+import Button from "../Button/button";
+import "./ProjectForm.css";
 
 function ProjectForm(props) {
   const handleChange = (event) => {
@@ -12,81 +13,101 @@ function ProjectForm(props) {
     props.onChange(id, moment(value).toISOString());
   };
 
-  console.log(props.project);
-
   return (
-    <div>
-      <div>
-        <label htmlFor="title">Title:</label>
-        <input
-          type="text"
-          id="title"
-          placeholder="Enter title"
-          onChange={handleChange}
-          value={props.project.title}
+    <div className="form-wrapper">
+      <form>
+        <div className="form-item">
+          <input
+            type="text"
+            id="title"
+            name="title"
+            required="required"
+            onChange={handleChange}
+            value={props.project.title}
+          />
+          <label htmlFor="title">
+            <span>Title</span>
+          </label>
+        </div>
+        <div className="form-item">
+          <input
+            type="text"
+            id="description"
+            name="description"
+            required="required"
+            onChange={handleChange}
+            value={props.project.description}
+          />
+          <label htmlFor="title">
+            <span>Description</span>
+          </label>
+        </div>
+        <div className="form-item">
+          <input
+            type="number"
+            id="goal"
+            name="goal"
+            required="required"
+            onChange={handleChange}
+            value={props.project.goal}
+          />
+          <label htmlFor="title">
+            <span>Goal</span>
+          </label>
+        </div>
+        <div className="form-item">
+          <input
+            type="text"
+            id="image"
+            name="image"
+            required="required"
+            onChange={handleChange}
+            value={props.project.image}
+          />
+          <label htmlFor="title">
+            <span>Image</span>
+          </label>
+        </div>
+
+        <div className="form-item2">
+          <label htmlFor="is_open">
+            Activate Project
+            <input
+              type="checkbox"
+              id="is_open"
+              onChange={handleChange}
+              value={props.project.is_open}
+            />
+          </label>
+        </div>
+        <div className="form-item2">
+          <label htmlFor="date_created">
+            Date Created
+            <input
+              type="date"
+              id="date_created"
+              onChange={handleDateChange}
+              value={moment(props.project.date_created).format("YYYY-MM-DD")}
+            />
+          </label>
+        </div>
+        <div className="form-item2">
+          <label htmlFor="closing_date">
+            Project Deadline
+            <input
+              type="date"
+              id="closing_date"
+              onChange={handleDateChange}
+              value={moment(props.project.closing_date).format("YYYY-MM-DD")}
+            />
+          </label>
+        </div>
+        <Button
+          type="submit"
+          handleClick={props.onSubmit}
+          label={props.label}
         />
-      </div>
-      <div>
-        <label htmlFor="description">Description:</label>
-        <input
-          type="text"
-          id="description"
-          placeholder="Enter description"
-          onChange={handleChange}
-          value={props.project.description}
-        />
-      </div>
-      <div>
-        <label htmlFor="goal">Goal:</label>
-        <input
-          type="number"
-          id="goal"
-          placeholder="enter a goal"
-          onChange={handleChange}
-          value={props.project.goal}
-        />
-      </div>
-      <div>
-        <label htmlFor="image">Image URL:</label>
-        <input
-          type="text"
-          id="image"
-          onChange={handleChange}
-          value={props.project.image}
-        />
-      </div>
-      <div>
-        <label htmlFor="is_open">Activate Project:</label>
-        <input
-          type="checkbox"
-          id="is_open"
-          onChange={handleChange}
-          value={props.project.is_open}
-        />
-      </div>
-      <div>
-        <label htmlFor="date_created">Date Created:</label>
-        <input
-          type="date"
-          id="date_created"
-          onChange={handleDateChange}
-          value={moment(props.project.date_created).format("YYYY-MM-DD")}
-        />
-      </div>
-      <div>
-        <label htmlFor="closing_date">Project Deadline:</label>
-        <input
-          type="date"
-          id="closing_date"
-          onChange={handleDateChange}
-          value={moment(props.project.closing_date).format("YYYY-MM-DD")}
-        />
-      </div>
-      <Button type="submit" handleClick={props.onSubmit} label={props.label} />
-      {/* <button type="submit" onClick={props.onSubmit}>
-        {" "}
-        Create Project
-      </button> */}
+      </form>
     </div>
   );
 }
