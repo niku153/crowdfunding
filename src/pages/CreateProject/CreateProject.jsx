@@ -48,7 +48,8 @@ function CreateProject(props) {
         if (!response.ok) {
           throw new Error(await response.text());
         }
-        navigate(`/project/${project.id}`);
+        // navigate(`/project/${project.id}`)
+        navigate("/");
       } catch (err) {
         console.error(err);
         alert(`Error: ${err.message}`);
@@ -69,9 +70,13 @@ function CreateProject(props) {
           label="Create Project"
         />
       ) : (
-        <p>
-          <Link to="/login">Log in</Link> to create a project
-        </p>
+        <div className="create-project">
+          <h3>Uh oh!</h3>
+          <p>
+            You'll have to <Link to="/login">log in</Link> or{" "}
+            <Link to="/register">register</Link> to create a project.
+          </p>
+        </div>
       )}
     </>
   );

@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { Link, useNavigate, useOutletContext } from "react-router-dom";
+
+import "./LoginForm.css";
 
 function LoginForm() {
   const { setLoggedIn } = useOutletContext();
@@ -60,26 +62,36 @@ function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="username">Username:</label>
+    <form onSubmit={handleSubmit} className="login-form-wrapper">
+      <h2>Login</h2>
+      <div className="form-item">
         <input
           type="text"
           id="username"
+          name="username"
+          required="required"
           onChange={handleChange}
-          placeholder="Enter username"
         />
+        <label htmlFor="username">
+          <span>Username</span>
+        </label>
       </div>
-      <div>
-        <label htmlFor="password">Password:</label>
+      <div className="form-item">
         <input
           type="password"
           id="password"
+          name="password"
           onChange={handleChange}
-          placeholder="Password"
+          required="required"
         />
+        <label htmlFor="password">
+          <span>Password</span>
+        </label>
       </div>
       <button type="submit">Login</button>
+      <p>
+        Don't have an account? Register <Link to="/register">here</Link>.
+      </p>
     </form>
   );
 }

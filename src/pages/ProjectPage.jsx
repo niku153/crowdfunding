@@ -5,10 +5,15 @@ import "./ProjectPage.css";
 import logo from "../media/logo.png";
 import moment from "moment";
 import PledgeForm from "../components/PledgeForm/PledgeForm";
-import { Link } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faPenToSquare,
+  faTrash,
+  faBookmark,
+} from "@fortawesome/free-solid-svg-icons";
+import { confirmAlert } from "react-confirm-alert";
 
 function ProjectPage() {
   //State
@@ -94,6 +99,23 @@ function ProjectPage() {
     }
   };
 
+  const submitDelete = () => {
+    confirmAlert({
+      title: "Confirm to submit",
+      message: "Are you sure you want to delete this project?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => deleteProject(),
+        },
+        {
+          label: "No",
+          //onClick: () => alert('Click No')
+        },
+      ],
+    });
+  };
+
   // Variables
   const currentDate = moment();
   const closingDate = moment(project.closing_date);
@@ -103,6 +125,9 @@ function ProjectPage() {
   const is_open = moment().isSameOrBefore(closingDate);
 
   const emailIcon = <FontAwesomeIcon icon={faEnvelope} />;
+  const editIcon = <FontAwesomeIcon icon={faPenToSquare} />;
+  const deleteIcon = <FontAwesomeIcon icon={faTrash} />;
+  const bookmarkedIcon = <FontAwesomeIcon icon={faBookmark} />;
 
   return (
     <div>
@@ -115,26 +140,28 @@ function ProjectPage() {
       </div>
       <img src={logo} className="logo"></img>
       <div className="project-wrapper">
-        <section>
+        <section className="project-details">
           <h2>{project.title}</h2>
           <h6>{owner.username}</h6>
-          <div>
+          <div className="owner-email">
             {emailIcon}
             <span>{owner.email}</span>
           </div>
-          <h6>{is_open ? <p>Active</p> : <p>Inactive</p>}</h6>
-          {user && user.id === project.owner && (
-            <>
-              <a href={`/project/${project.id}/edit`}>Edit</a>
-              <button onClick={deleteProject}>Delete</button>
-            </>
-          )}
-          {bookmark ? (
-            <div>Bookmarked</div>
-          ) : (
-            <div onClick={addToBookmark}>Bookmark</div>
-          )}
+          <div className="active-bookmark-wrapper">
+            <span className="active">
+              {is_open ? <span>Active</span> : <span>Inactive</span>}
+            </span>
 
+            {bookmark ? (
+              <span className="bookmarked-icon">
+                {bookmarkedIcon} Bookmarked
+              </span>
+            ) : (
+              <span onClick={addToBookmark} className="bookmark-button">
+                {bookmarkedIcon} Bookmark
+              </span>
+            )}
+          </div>
           {/* <div>
             {" "}
             {bookmark === false ? (
@@ -180,6 +207,18 @@ function ProjectPage() {
         </section>
 
         <PledgeForm project={project} />
+        <div className="edit-delete-wrapper">
+          {user && user.id === project.owner && (
+            <>
+              <a href={`/project/${project.id}/edit`} className="edit-project">
+                {editIcon}
+              </a>
+              <a className="delete-project" onClick={submitDelete}>
+                {deleteIcon}
+              </a>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

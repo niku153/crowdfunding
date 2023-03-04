@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import moment from "moment";
-import Button from "../Button/button";
+import Button from "../Button/Button";
 import "./ProjectForm.css";
 
 function ProjectForm(props) {
@@ -69,7 +69,7 @@ function ProjectForm(props) {
           </label>
         </div>
 
-        <div className="form-item2">
+        {/* <div className="form-item2">
           <label htmlFor="is_open">
             Activate Project
             <input
@@ -79,7 +79,7 @@ function ProjectForm(props) {
               value={props.project.is_open}
             />
           </label>
-        </div>
+        </div> */}
         <div className="form-item2">
           <label htmlFor="date_created">
             Date Created

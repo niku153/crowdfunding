@@ -7,7 +7,7 @@ import ProjectPage from "./pages/ProjectPage";
 import LoginPage from "./pages/LoginPage";
 import EditProjectPage from "./pages/EditProjectPage";
 import CreateProject from "./pages/CreateProject/CreateProject";
-import RegistrationPage from "./pages/RegistrationPage";
+import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import UserPage from "./pages/UserPage";
 
 // Components
@@ -15,7 +15,7 @@ import Nav from "./components/Nav/Nav";
 
 //CSS
 import "./App.css";
-import ProfilePage from "./pages/ProfilePage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 const Layout = () => {
   const [loggedIn, setLoggedIn] = useState(

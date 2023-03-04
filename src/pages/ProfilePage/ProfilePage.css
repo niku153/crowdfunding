@@ -1,0 +1,9 @@
+.profile-wrapper p {
+  text-align: center;
+  font-family: var(--body-font);
+}
+
+.profile-wrapper a {
+  text-decoration: none;
+  color: rgb(60, 179, 171);
+}

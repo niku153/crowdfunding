@@ -1,4 +1,4 @@
-import RegistrationForm from "../components/RegistrationForm/RegistrationForm";
+import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
 import { Link } from "react-router-dom";
 
 function RegistrationPage(props) {
@@ -8,11 +8,6 @@ function RegistrationPage(props) {
     <div>
       {!authToken ? (
         <>
-          <h2>Join the medical research community</h2>
-          <p>
-            Register now to pledge to a research project or to create your own
-            project to be crowdfunded
-          </p>
           <RegistrationForm />
         </>
       ) : (

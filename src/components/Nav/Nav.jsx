@@ -1,11 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Nav(props) {
+  const navigate = useNavigate();
   const { loggedIn, setLoggedIn } = props;
 
   const handleClick = () => {
     window.localStorage.removeItem("token");
     setLoggedIn(false);
+    navigate("/");
   };
 
   return (

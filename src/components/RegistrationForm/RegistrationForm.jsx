@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
+import "./RegistrationForm.css";
 
 function RegistrationForm() {
   const authToken = window.localStorage.getItem("token");
@@ -39,37 +40,54 @@ function RegistrationForm() {
   };
 
   return (
-    <div>
+    <div className="registration-form-wrapper">
+      <h2>Join the medical research community</h2>
+      <p>
+        Register now to create your own project or to pledge to an existing
+        project.
+      </p>
       <form onSubmit={handleSubmit}>
-        <h2>Register as a Researcher Below</h2>
-        <div>
-          <label htmlFor="username">Username:</label>
+        <h2>Register </h2>
+        <div className="form-item">
           <input
             type="text"
             id="username"
-            placeholder="Enter a username"
+            name="username"
             onChange={handleChange}
+            required="required"
           />
+          <label htmlFor="username">
+            <span>Username</span>
+          </label>
         </div>
-        <div>
-          <label htmlFor="email">Email:</label>
+        <div className="form-item">
           <input
             type="email"
             id="email"
-            placeholder="Enter your email"
+            name="email"
             onChange={handleChange}
+            required="required"
           />
+          <label htmlFor="email">
+            <span>Email</span>
+          </label>
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
+        <div className="form-item">
           <input
             type="text"
             id="password"
-            placeholder="Enter a password"
+            name="password"
+            required="required"
             onChange={handleChange}
           />
+          <label htmlFor="password">
+            <span>Password</span>
+          </label>
         </div>
-        <button type="submit">Register User</button>
+        <button type="submit">Register</button>
+        <p>
+          Already have an account? Login <Link to="/login">here</Link>.
+        </p>
       </form>
     </div>
   );

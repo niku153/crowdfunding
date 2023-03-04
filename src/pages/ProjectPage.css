@@ -53,14 +53,95 @@
   margin-bottom: 10px;
   border-radius: 8px;
   background-color: white;
+  text-align: center;
 }
 
-.project-wrapper h2 {
+.project-details h2 {
   font-family: var(--heading-font);
   font-size: 22px;
-  text-align: center;
   font-weight: 600;
   background-color: white;
+}
+.project-details h6 {
+  font-family: var(--heading-font);
+  font-size: 15px;
+  font-weight: 500;
+  background-color: white;
+  color: rgb(98, 98, 98);
+}
+
+.project-details .owner-email {
+  font-family: var(--heading-font);
+  font-size: 15px;
+  font-weight: 500;
+  background-color: white;
+  color: rgb(98, 98, 98);
+  margin-bottom: 40px;
+}
+
+.project-details .owner-email span {
+  background-color: transparent;
+}
+
+.fa-envelope {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.active-bookmark-wrapper {
+  margin: 20px;
+  font-family: var(--body-font);
+  font-size: 13px;
+  background-color: transparent;
+}
+
+.active-bookmark-wrapper .active {
+  background-color: transparent;
+}
+
+.active-bookmark-wrapper .active span {
+  background-color: transparent;
+  color: rgb(98, 98, 98);
+  padding: 0.8rem 1.6rem;
+}
+
+.fa-bookmark {
+  background-color: transparent;
+}
+.bookmark-button {
+  padding: 0.8rem 1.6rem;
+  margin: 10px;
+  border: none;
+  border-radius: 999px;
+  font-family: var(--body-font);
+  letter-spacing: 0.08em;
+  color: white;
+  background-color: rgb(48, 48, 48);
+  text-transform: uppercase;
+}
+
+.bookmark-button:hover {
+  cursor: pointer;
+  background-color: rgb(98, 98, 98);
+  transition: 0.2s ease-in-out;
+}
+
+.bookmarked-icon {
+  padding: 0.8rem 1.6rem;
+  margin: 10px;
+  border: none;
+  border-radius: 999px;
+  font-family: var(--body-font);
+  letter-spacing: 0.08em;
+  color: white;
+  background-color: #157a73;
+  text-transform: uppercase;
+}
+
+.bookmarked-icon:hover {
+  cursor: pointer;
+  background-color: #3bb3aa;
+  transition: 0.2s ease-in-out;
 }
 
 .project-metrics {
@@ -122,4 +203,59 @@
   background-color: white;
   color: grey;
   font-size: 13px;
+}
+
+.react-confirm-alert {
+  font-family: var(--body-font);
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 50px;
+}
+
+.react-confirm-alert button {
+  padding: 0.8rem 1.6rem;
+  margin: 10px;
+  border: none;
+  border-radius: 999px;
+  font-family: var(--body-font);
+  letter-spacing: 0.08em;
+  color: white;
+  background-color: rgb(60, 179, 171);
+  text-transform: uppercase;
+}
+
+.react-confirm-alert-svg {
+  display: none;
+}
+
+.react-confirm-alert button:hover {
+  cursor: pointer;
+  background-color: #157a73;
+  transition: 0.2s ease-in-out;
+}
+
+.edit-delete-wrapper {
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  background-color: transparent;
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+.fa-pen-to-square,
+.fa-trash {
+  font-size: 30px;
+  margin: 20px;
+  text-align: center;
+  background: transparent;
+  color: rgb(60, 179, 171);
+  transition: 0.3s ease-in-out;
+}
+
+.fa-pen-to-square:hover {
+  color: #157a73;
+}
+.fa-trash:hover {
+  color: rgb(187, 0, 0);
 }

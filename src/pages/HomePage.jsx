@@ -3,9 +3,6 @@ import { useState, useEffect } from "react";
 //Components
 import ProjectCard from "../components/ProjectCard/ProjectCard";
 
-// Data
-import { allProjects } from "../data";
-
 //Media
 // import banner from "../media/drugs-banner.jpeg";
 import logo from "../media/logo.png";
@@ -62,12 +59,12 @@ function HomePage() {
         </a>
       </section>
       <div id="project-list">
-        {projectList.map((project, key) => {
+        {projectList.slice(0, 3).map((project, key) => {
           return <ProjectCard key={key} projectData={project} />;
         })}
       </div>
-      <div>
-        <button onClick={shuffleProjectList}>Shuffle</button>
+      <button onClick={shuffleProjectList}>Shuffle</button>
+      <div id="project-list">
         {shuffledProjectList.map((project, key) => {
           return <ProjectCard key={key} projectData={project} />;
         })}
