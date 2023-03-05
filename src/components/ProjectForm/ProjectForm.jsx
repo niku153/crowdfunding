@@ -1,6 +1,6 @@
 import React from "react";
 import moment from "moment";
-import Button from "../button/button";
+import Button from "../Button/button";
 import "./ProjectForm.css";
 
 function ProjectForm(props) {
