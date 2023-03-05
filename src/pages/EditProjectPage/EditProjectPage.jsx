@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import ProjectForm from "../../components/ProjectForm/ProjectForm";
-import ProjectPage from "../ProjectPage/ProjectPage";
 import "./EditProjectPage.css";
 
 function EditProjectPage(props) {
