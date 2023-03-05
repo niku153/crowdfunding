@@ -279,5 +279,10 @@
 
   .active-bookmark-wrapper {
     margin: 0px;
+    padding-bottom: 20px;
+  }
+
+  .project-details h2 {
+    margin-top: 15px;
   }
 }
