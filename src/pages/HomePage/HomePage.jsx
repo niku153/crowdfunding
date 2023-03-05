@@ -60,7 +60,7 @@ function HomePage() {
       </section>
       <h2>Recent Projects</h2>
       <div id="project-list">
-        {projectList.slice(-1, -4).map((project, key) => {
+        {projectList.slice(0, 3).map((project, key) => {
           return <ProjectCard key={key} projectData={project} />;
         })}
       </div>
