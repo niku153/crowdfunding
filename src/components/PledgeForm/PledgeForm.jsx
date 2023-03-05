@@ -88,7 +88,7 @@ function PledgeForm(props) {
           <button type="submit">Pledge</button>
         </form>
       ) : (
-        <p>
+        <p className="back-up-text">
           <Link to="/login">Log in</Link> to make a pledge
         </p>
       )}

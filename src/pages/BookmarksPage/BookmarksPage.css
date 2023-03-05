@@ -1,0 +1,17 @@
+.profile-wrapper-empty p {
+  text-align: center;
+  font-family: var(--body-font);
+}
+
+.profile-wrapper-empty a {
+  text-decoration: none;
+  color: rgb(60, 179, 171);
+}
+
+.profile-wrapper {
+  margin-top: 100px;
+}
+
+.profile-wrapper h2 {
+  color: #6c6c6c;
+}

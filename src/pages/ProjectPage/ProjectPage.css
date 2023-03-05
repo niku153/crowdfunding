@@ -1,6 +1,9 @@
 :root {
   --heading-font: "Montserrat", sans-serif;
   --body-font: "Poppins", sans-serif;
+  --accent-colour-dark: #157a73;
+  --accent-colour-light: rgb(60, 179, 171);
+  --text-colour: #6c6c6c;
 }
 
 * {
@@ -20,6 +23,7 @@
   width: 100%;
   height: 30vh;
   background-size: cover;
+  margin-top: 80px;
 }
 
 .image-overlay {
@@ -34,7 +38,7 @@
   z-index: 1;
   margin: 0 auto;
   position: relative;
-  top: -75px;
+  top: -35px;
   background-color: transparent;
 }
 
@@ -61,6 +65,7 @@
   font-size: 22px;
   font-weight: 600;
   background-color: white;
+  margin-top: 45px;
 }
 .project-details h6 {
   font-family: var(--heading-font);
@@ -134,7 +139,7 @@
   font-family: var(--body-font);
   letter-spacing: 0.08em;
   color: white;
-  background-color: #157a73;
+  background-color: var(--accent-colour-dark);
   text-transform: uppercase;
 }
 
@@ -230,7 +235,7 @@
 
 .react-confirm-alert button:hover {
   cursor: pointer;
-  background-color: #157a73;
+  background-color: var(--accent-colour-dark);
   transition: 0.2s ease-in-out;
 }
 
@@ -249,13 +254,30 @@
   margin: 20px;
   text-align: center;
   background: transparent;
-  color: rgb(60, 179, 171);
+  color: var(--accent-colour-light);
   transition: 0.3s ease-in-out;
 }
 
 .fa-pen-to-square:hover {
-  color: #157a73;
+  color: var(--accent-colour-dark);
 }
 .fa-trash:hover {
   color: rgb(187, 0, 0);
+}
+
+@media (max-width: 768px) {
+  .background-image,
+  .image-overlay,
+  .logo {
+    display: none;
+  }
+
+  .project-wrapper {
+    width: 95%;
+    top: 80px;
+  }
+
+  .active-bookmark-wrapper {
+    margin: 0px;
+  }
 }

@@ -1,10 +1,14 @@
 :root {
   --heading-font: "Montserrat", sans-serif;
   --body-font: "Poppins", sans-serif;
+  --accent-colour-dark: #157a73;
+  --accent-colour-light: rgb(60, 179, 171);
+  --text-colour: #6c6c6c;
 }
 
 .form-wrapper {
   -webkit-animation: fadeIn 2s;
+  color: var(--text-colour);
 }
 
 form {
@@ -25,20 +29,22 @@ form {
   width: 500px;
 }
 
-.form-item input {
+.form-item input,
+.form-item textarea {
   width: 100%;
   padding: 20px;
-  border: 1px solid black;
+  border: 1px solid var(--text-colour);
   background-color: transparent;
   border-radius: 5px;
   outline: none;
-  color: black;
+  color: var(--text-colour);
   font-size: 15px;
   transition: 0.3s;
+  font-family: var(--body-font);
 }
 
-.form-item input#description {
-  height: 200px;
+.form-item textarea {
+  height: 100px;
 }
 
 .form-item span {
@@ -48,7 +54,7 @@ form {
   padding: 10px;
   pointer-events: none;
   font-size: 18px;
-  color: black;
+  color: var(--text-colour);
   text-transform: uppercase;
   transition: 0.3s;
   letter-spacing: 0.5em;
@@ -56,21 +62,25 @@ form {
 }
 
 .form-item input:valid ~ label span,
-.form-item input:focus ~ label span {
-  color: black;
+.form-item input:focus ~ label span,
+.form-item textarea:valid ~ label span,
+.form-item textarea:focus ~ label span {
+  color: var(--accent-colour-light);
   transform: translateX(10px) translateY(-7px);
   font-size: 0.8em;
   font-weight: bold;
   padding: 0 10px;
   background: #f5f4f4;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  border-left: 1px solid var(--accent-colour-light);
+  border-right: 1px solid var(--accent-colour-light);
   letter-spacing: 0.2em;
 }
 
 .form-item input:valid,
-.form-item input:focus {
-  border: 1px solid black;
+.form-item input:focus,
+.form-item textarea:valid,
+.form-item textarea:focus {
+  border: 1px solid var(--accent-colour-light);
 }
 
 @keyframes fadeIn {
@@ -83,11 +93,7 @@ form {
 }
 
 .form-item input[type="text"] {
-  overflow: hidden;
-  text-overflow: clip;
-  white-space: nowrap;
-  word-wrap: break-word;
-  display: flex;
+  max-width: 500px;
 }
 
 .form-item2 label {
@@ -104,7 +110,7 @@ form {
   vertical-align: middle;
   position: relative;
   bottom: 1px;
-  accent-color: #157a73;
+  accent-color: var(--accent-colour-dark);
 }
 
 .form-item2 input[type="date"] {
@@ -114,4 +120,12 @@ form {
   margin-left: 10px;
   border: 1px solid;
   padding: 5px;
+  color: var(--text-colour);
+}
+
+@media (max-width: 768px) {
+  .form-item {
+    width: 300px;
+    left: -20px;
+  }
 }

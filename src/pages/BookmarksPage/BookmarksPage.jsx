@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
-import "./ProfilePage.css";
+import "./BookmarksPage.css";
 
 async function getProject(id) {
   return fetch(`${import.meta.env.VITE_API_URL}projects/${id}`).then(
@@ -11,7 +11,7 @@ async function getProject(id) {
   );
 }
 
-function ProfilePage() {
+function BookmarksPage() {
   const [projects, setProjects] = useState([]);
   const { user } = useOutletContext();
 
@@ -27,7 +27,8 @@ function ProfilePage() {
   }, [user]);
 
   return (
-    <div>
+    <div className="profile-wrapper">
+      <h2>Your bookmarked projects</h2>
       {projects.length ? (
         <div id="project-list">
           {projects.map((project, key) => {
@@ -35,7 +36,7 @@ function ProfilePage() {
           })}{" "}
         </div>
       ) : (
-        <div className="profile-wrapper">
+        <div className="profile-wrapper-empty">
           <h2>Oh no!</h2>
           <p>
             You don't have any bookmarked projects yet! Go to the{" "}
@@ -47,4 +48,4 @@ function ProfilePage() {
   );
 }
 
-export default ProfilePage;
+export default BookmarksPage;

@@ -30,7 +30,7 @@ function ProjectForm(props) {
           </label>
         </div>
         <div className="form-item">
-          <input
+          <textarea
             type="text"
             id="description"
             name="description"

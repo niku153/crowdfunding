@@ -2,20 +2,20 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 // Pages
-import HomePage from "./pages/HomePage";
-import ProjectPage from "./pages/ProjectPage";
+import HomePage from "./pages/HomePage/HomePage";
+import ProjectPage from "./pages/ProjectPage/ProjectPage";
 import LoginPage from "./pages/LoginPage";
-import EditProjectPage from "./pages/EditProjectPage";
+import EditProjectPage from "./pages/EditProjectPage/EditProjectPage";
 import CreateProject from "./pages/CreateProject/CreateProject";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
-import UserPage from "./pages/UserPage";
+import AllProjects from "./pages/AllProjects/AllProjects";
 
 // Components
 import Nav from "./components/Nav/Nav";
 
 //CSS
 import "./App.css";
-import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import BookmarksPage from "./pages/BookmarksPage/BookmarksPage";
 
 const Layout = () => {
   const [loggedIn, setLoggedIn] = useState(
@@ -55,11 +55,11 @@ const router = createBrowserRouter([
       { path: "/", element: <HomePage /> },
       { path: "/login", element: <LoginPage /> },
       { path: "/project/:id", element: <ProjectPage /> },
+      { path: "/projects", element: <AllProjects /> },
       { path: "/create-project", element: <CreateProject /> },
       { path: "/project/:id/edit", element: <EditProjectPage /> },
       { path: "/register", element: <RegistrationPage /> },
-      { path: "/user/:id", element: <UserPage /> },
-      { path: "/profile", element: <ProfilePage /> },
+      { path: "/bookmarks", element: <BookmarksPage /> },
 
       {},
     ],

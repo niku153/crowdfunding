@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import ProjectForm from "../components/ProjectForm/ProjectForm";
-import ProjectPage from "./ProjectPage";
+import ProjectForm from "../../components/ProjectForm/ProjectForm";
+import ProjectPage from "../ProjectPage/ProjectPage";
+import "./EditProjectPage.css";
 
 function EditProjectPage(props) {
   const authToken = window.localStorage.getItem("token");
@@ -78,7 +79,7 @@ function EditProjectPage(props) {
   // };
 
   return (
-    <>
+    <div className="edit-project-page-wrapper">
       <h2>Edit a Project</h2>
 
       {authToken ? (
@@ -99,7 +100,7 @@ function EditProjectPage(props) {
           <button onClick={handleCancel}>Cancel</button>
         </>
       ) : null} */}
-    </>
+    </div>
   );
 }
 

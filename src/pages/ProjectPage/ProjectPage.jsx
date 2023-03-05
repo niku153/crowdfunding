@@ -2,9 +2,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./ProjectPage.css";
-import logo from "../media/logo.png";
+import logo from "../../media/logo.png";
 import moment from "moment";
-import PledgeForm from "../components/PledgeForm/PledgeForm";
+import PledgeForm from "../../components/PledgeForm/PledgeForm";
 import { useOutletContext } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

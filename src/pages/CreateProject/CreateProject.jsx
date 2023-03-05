@@ -60,7 +60,7 @@ function CreateProject(props) {
   };
 
   return (
-    <>
+    <div className="create-project-form-wrapper">
       <h2>Create a New Project</h2>
       {authToken ? (
         <ProjectForm
@@ -78,7 +78,7 @@ function CreateProject(props) {
           </p>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

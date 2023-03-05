@@ -1,6 +1,9 @@
 :root {
   --heading-font: "Montserrat", sans-serif;
   --body-font: "Poppins", sans-serif;
+  --accent-colour-dark: #157a73;
+  --accent-colour-light: rgb(60, 179, 171);
+  --text-colour: #6c6c6c;
 }
 
 .pledge-form-wrapper {
@@ -27,7 +30,7 @@ form {
 .pledge-form-wrapper input {
   margin-left: 10px;
   height: 25px;
-  border: 1px solid black;
+  border: 1px solid var(--text-colour);
   border-radius: 4px;
   background-color: transparent;
 }
@@ -48,13 +51,13 @@ form {
   font-family: var(--body-font);
   letter-spacing: 0.08em;
   color: white;
-  background-color: rgb(60, 179, 171);
+  background-color: var(--accent-colour-light);
   text-transform: uppercase;
 }
 
 .pledge-form-wrapper button:hover {
   cursor: pointer;
-  background-color: #157a73;
+  background-color: var(--accent-colour-dark);
   transition: 0.2s ease-in-out;
 }
 
@@ -65,5 +68,17 @@ form {
   vertical-align: middle;
   position: relative;
   bottom: 1px;
-  accent-color: #157a73;
+  accent-color: var(--accent-colour-dark);
+}
+
+.back-up-text {
+  color: var(--text-colour);
+  background-color: transparent;
+  font-family: var(--body-font);
+  text-align: center;
+}
+
+.back-up-text a {
+  text-decoration: none;
+  color: var(--accent-colour-light);
 }

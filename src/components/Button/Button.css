@@ -1,6 +1,9 @@
 :root {
   --heading-font: "Montserrat", sans-serif;
   --body-font: "Poppins", sans-serif;
+  --accent-colour-dark: #157a73;
+  --accent-colour-light: rgb(60, 179, 171);
+  --text-colour: #6c6c6c;
 }
 
 .primary-button {
@@ -10,12 +13,12 @@
   font-family: var(--body-font);
   letter-spacing: 0.08em;
   color: white;
-  background-color: rgb(60, 179, 171);
+  background-color: var(--accent-colour-light);
   text-transform: uppercase;
 }
 
 .primary-button:hover {
   cursor: pointer;
-  background-color: #157a73;
+  background-color: var(--accent-colour-dark);
   transition: 0.2s ease-in-out;
 }

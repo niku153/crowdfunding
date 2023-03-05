@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 
 //Components
-import ProjectCard from "../components/ProjectCard/ProjectCard";
+import ProjectCard from "../../components/ProjectCard/ProjectCard";
 
 //Media
 // import banner from "../media/drugs-banner.jpeg";
-import logo from "../media/logo.png";
-import banner from "../media/stethoscope.jpeg";
+import logo from "../../media/logo.png";
+import banner from "../../media/stethoscope.jpeg";
 
 //CSS
 import "./HomePage.css";
@@ -34,11 +34,11 @@ function HomePage() {
   const shuffleProjectList = () => {
     const shuffledList = [...projectList]
       .sort(() => Math.random() - 0.5)
-      .slice(0, 6);
+      .slice(0, 3);
     setShuffledProjectList(shuffledList);
   };
   return (
-    <div>
+    <div className="homepage-wrapper">
       <section className="homepage-hero">
         <img src={banner} className="homepage-image"></img>
         {/* <div
@@ -58,12 +58,13 @@ function HomePage() {
           Register your project →
         </a>
       </section>
+      <h2>Recent Projects</h2>
       <div id="project-list">
         {projectList.slice(0, 3).map((project, key) => {
           return <ProjectCard key={key} projectData={project} />;
         })}
       </div>
-      <button onClick={shuffleProjectList}>Shuffle</button>
+      <button onClick={shuffleProjectList}>Shuffle Projects</button>
       <div id="project-list">
         {shuffledProjectList.map((project, key) => {
           return <ProjectCard key={key} projectData={project} />;

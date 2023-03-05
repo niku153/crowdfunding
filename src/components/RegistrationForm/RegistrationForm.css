@@ -1,6 +1,9 @@
 :root {
   --heading-font: "Montserrat", sans-serif;
   --body-font: "Poppins", sans-serif;
+  --accent-colour-dark: #157a73;
+  --accent-colour-light: rgb(60, 179, 171);
+  --text-colour: #6c6c6c;
 }
 
 .registration-form-wrapper p {
@@ -16,13 +19,13 @@
   font-family: var(--body-font);
   letter-spacing: 0.08em;
   color: white;
-  background-color: rgb(60, 179, 171);
+  background-color: var(--accent-colour-light);
   text-transform: uppercase;
 }
 
 .registration-form-wrapper button:hover {
   cursor: pointer;
-  background-color: #157a73;
+  background-color: var(--accent-colour-dark);
   transition: 0.2s ease-in-out;
 }
 
@@ -33,10 +36,17 @@
   margin: 0 auto;
   padding: 20px 0;
   border-radius: 16px;
-  margin-top: 20px;
+  margin-top: 100px;
 }
 
 .registration-form-wrapper a {
   text-decoration: none;
-  color: rgb(60, 179, 171);
+  color: var(--accent-colour-light);
+}
+
+@media (max-width: 768px) {
+  .registration-form-wrapper {
+    box-shadow: none;
+    width: 100%;
+  }
 }
